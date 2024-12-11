@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="ko">
+        <head>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+	<link rel="icon" href="img/favicon.png">
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>행렬 계산기_전영진</title>
+		<style>
+			@font-face {
+   				 font-family: 'Sam3KRFont';
+   				 src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_eight@1.0/Sam3KRFont.woff') format('woff');
+    				 font-weight: normal;
+    				 font-style: normal;
+			}
+			body{width:100vw; height:100vh; position:relative;}
+			*{margin:0; padding:0; font-family: 'Sam3KRFont', serif;}
+			div{box-sizing:border-box;}
+			button{transition:0.5s all;}
+			.background_d{width:100vw; height:100vh; background:url("img/background.jpg") no-repeat center center; background-size:100% 100%; position:absolute;  z-index:-111}
+			.p_box{position:absolute; color:#fff; width:600px; height:70px; font-size:25px; right:0.1%; top:50px; text-align:left;}
+			h1{text-align:center; color:white; font-size:60px; padding-top:20px; font-weight:normal}
+			.d_box{width:100vw; height:550px; margin:30px auto; display:flex; justify-content:center; gap:15px;}
+			.w_box{width:30vw; height:550px;  border:3px solid #fff; box-shadow: 0 0 20px rgba(255, 0, 141, 0.9); padding:15px 15px 15px; background:rgb(0,0,0, 0.35);}
+			.p_description{font-size:35px; text-align:center; color:burlywood; font-weight:400;}
+			.ev_box{width:100%; height:80px; border-bottom:1px solid #b600f126; display:flex; align-items:center; gap:30px; justify-content:center;}
+			.ev_box>input{width:30px; height:40px; padding-left:15px; outline:none; border:none; font-size:20px;}
+			.ev_box i{color:white; font-size:30px;}
+			.ev_box button{width:120px; height:40px; border:3px double #fea4ff; margin-left:60px; background:#d4b3f759; color:#fff; font-size:23px;}
+			.ev_box button:hover{background:#9573b9d4; cursor:pointer;}
+			.btn_wrap{width:100vw; height:80px;  margin:50px auto; display:flex; align-items:center; justify-content:center; gap:25px;}
+			.btnd{width:31vw; height:80px; display:flex; align-items:center; justify-content:center; gap:40px;}
+			.btn_wrap button{width:60px; height:60px; font-size:40px; border:none; cursor:pointer;}
+			.r{background:#ed143d9e;}
+			.r:hover{background:#ff0030;}
+			.red{color:#ff0030;}
+			.i{background:#abf7378c;}
+			.i:hover{background:#b8ff4b;}
+			.green{color:#b8ff4b;}
+			.o{background:#6495ed99;}
+			.o:hover{background:#6695e9;}
+			.blue{color:#6695e9;}
+			.cal_d button{color:#fff; background:#ff9552ad;}
+			.cal_d button:hover{background:#ff9552; cursor:pointer;}
+			.re_wrap{width:100%; height:400px; display:flex; justify-content:center; flex-direction: column; align-items: center; gap:5px;  margin-top:3px;}
+			#rewrapR{margin-top:80px;}
+			.rebox{width:100%; height:53px; display:flex; gap:5px; justify-content:center;}
+			.rebox input{width:53px; text-align:center; height:53px; border:none; outline:none; background:#fff; box-shadow: 0 0 20px rgba(255, 0, 141, 0.9); font-size:16px; box-sizing:border-box;}
+			.fail_box{position:absolute; z-index:99; width:100vw; height:100vh; background:#00000085; top:0; display:none;}
+			.fail_box .fail_wrap{width:550px; height:150px; padding-top:20px; background:#000; border:3px dotted red; position:relative; margin:250px auto;}
+			.fail_box .fail_wrap div{display:flex; justify-content:center;}
+			.fail_box p {color:#fff; font-size:30px;  text-align:center; margin:0 auto;}
+			.fail_box p:before{content:"!"; background:red; width:50px; height:50px; position:absolute; left:15px; top:22px; text-align:center; font-size:40px; line-height:50px;}
+			.fail_box button{display:block; margin:16px auto; background:none; border:1px solid #fff; color:#fff; width:60px; height:30px; font-size:18px; cursor:pointer;}
+			.fail_box button:hover{background:#fff; color:#000;}
+			#fail_box4 p {font-size:25px;}
+			#fail_box4 .fail_wrap{height:160px;}
+			#fail_box4 button {font-size:25px; margin:10px auto; font-size:15px;}
+		</style>
+        </head>
+	<body>
+		<div class="background_d">
+			<div class="p_box">
+				<p>최대 7 <i class="xi-close-min"></i> 7 행렬 계산기입니다.</p>
+				<p><span class="red">R</span>:랜덤입력  <span class="green">I</span>:단위행렬  <span class="blue">0</span>: 0행렬 </p>
+			</div>
+		</div>
+		<header>
+			<h1>행렬 계산기</h1>
+		</header>
+		<section class="d_box">
+			<article class="w_box">
+				<h2 class="p_description">첫 번째 행렬</h2>
+				<div class="ev_box">
+					<input id="xA1" type="number" min="1" max="7" value="1"><i class="xi-close-min"></i>
+					<input id="yA1" type="number" min="1" max="7" value="1">
+					<button class="dr_btn" id="dr_btn1">그리기</button>
+				</div>
+				<div class="re_wrap" id="rewrap1"></div>
+			</article>
+			<article class="w_box">
+				<h2 class="p_description">두 번째 행렬</h2>
+				<div class="ev_box">
+					<input id="xA2" type="number" min="1" max="7" value="1"><i class="xi-close-min"></i>
+					<input id="yA2" type="number" min="1" max="7" value="1">
+					<button class="dr_btn" id="dr_btn2">그리기</button>
+				</div>
+				<div class="re_wrap" id="rewrap2"></div>
+			</article>
+			<article class="w_box">
+				<h2 class="p_description">결과</h2>
+				<div class="re_wrap" id="rewrapR"></div>
+			</article>
+		</section>
+		<section class="btn_wrap">
+			<article class="btnd">
+				<button class="r" id="r_btn1">R</button>
+				<button class="i" id="i_btn1">I</button>
+				<button class="o" id="o_btn1">0</button>
+			</article>
+			<article class="btnd">
+				<button class="r" id="r_btn2">R</button>
+				<button class="i" id="i_btn2">I</button>
+				<button class="o" id="o_btn2">0</button>
+			</article>
+			<article class="cal_d btnd">
+				<button id="pl_btn"><i class="xi-plus-min"></i></button>
+				<button id="mi_btn"><i class="xi-minus-min"></i></button>
+				<button id="mu_btn"><i class="xi-close-min"></i></button>
+			</article>
+		</section>
+		<div class="fail_box" id="fail_box1">
+			<div class="fail_wrap">
+				<p>행렬의 행과 열의 개수를 <br>다시 입력해서 계산해주세요.</p>
+				<button id="ybtn1">Yes</button>
+			</div>
+		</div>
+		<div class="fail_box" id="fail_box2">
+			<div class="fail_wrap">
+				<p>단위행렬을 생성하시려면 <br>정사각행렬을 입력해주세요.</p>
+				<button id="ybtn2">Yes</button>
+			</div>
+		</div>
+		<div class="fail_box" id="fail_box3">
+			<div class="fail_wrap">
+				<p>1이상 7이하의 <br>숫자를 입력해주세요.</p>
+				<button id="ybtn3">Yes</button>
+			</div>
+		</div>
+		<div class="fail_box" id="fail_box4">
+			<div class="fail_wrap">
+				<p>첫 번째 행렬의 열의 개수와 <br>두 번째 행렬의 행의 개수를 <br>동일하게 입력하고 계산해주세요.</p>
+				<button id="ybtn4">Yes</button>
+			</div>
+		</div>
+		<script>
+			let firstArray = []; // 첫 번째 행렬의 배열
+			let secondArray = []; // 두 번째 행렬의 배열
+			let resultArray = []; // 두 행렬의 연산결과 배열
+
+
+			//입력 숫자 판단 함수
+			function checkValue(inputValue){
+				if(!(inputValue<=7) || !(inputValue>0)){
+					inputValue=0;
+					document.getElementById("fail_box3").style.display = "block";
+					return false;
+				}
+				return true; 
+			}
+
+			// 입력 배열  행렬 초기화 함수
+			function resetArray(countNumber1,countNumber2, inputArray) {
+				for(let i=0; i<countNumber1; i++){
+					inputArray[i] = []; // 2차원 배열
+					for(let j=0; j<countNumber2; j++){
+						inputArray[i][j] = 0; // 모든 값 0으로 초기화
+					}
+				}
+			}
+
+			// 행렬 생성 함수
+			function makeMatrix(inputId, inputArray, rowValue, colValue) {
+				let forMakeString = '';
+				for(let i=0; i<rowValue; i++) { // 행 생성
+					let tempString = '<div class="rebox" id="' + inputId + '_' + String(i) + '">';
+					for(let j=0; j<colValue; j++){ // 열 생성
+						tempString += '<input id="'; 
+						tempString += inputId + "_" + String(i) + "_" + String(j) ; //생성된 행렬마다 아이디 부여
+						if(inputId==="rewrapR"){
+							tempString +='" type="text" min="0" max="99" readonly class="i_box" value="';
+						}else{
+							tempString +='" type="number" min="0" max="99" class="i_box" value="';
+						}
+						tempString += inputArray[i][j].toLocaleString();
+						tempString +='" step="1" maxlength="1">';
+					}
+					tempString +='</div>';
+					forMakeString += tempString;
+					//console.log(forMakeString);
+				}
+				document.getElementById( inputId ).innerHTML = forMakeString;					
+			}
+
+			// 행렬에서 변경되는 값을 추적,갱신하고 재출력 하기 위한 함수
+			function checkValueAttribute() {
+					let xValue1 = parseInt(document.getElementById("xA1").value);
+					let yValue1 = parseInt(document.getElementById("yA1").value);
+					let xValue2 = parseInt(document.getElementById("xA2").value);
+					let yValue2 = parseInt(document.getElementById("yA2").value);
+
+					this.onchange = function(event) {
+						const parseInfo = (event.target.id).split("_");
+						const arrayName = parseInfo[0]; //생성된 행렬의 각 name
+						//console.log(parseInfo);
+						const arrayIndex = parseInfo[1]; // 생성된 행렬의 열값
+						const arrayIndex2 = parseInfo[2]; // 생성된 행렬의 행값
+						const changedValue = Number( event.target.value ); // 바뀐 값
+						// alert( arrayName + "/" + arrayIndex + "/" + arrayIndex2 + "/" + changedValue );
+						switch (arrayName) {
+							case 'rewrap1':
+								firstArray[arrayIndex][arrayIndex2] = changedValue; // 각 열과 행에 입력된 값 입력
+								makeMatrix( "rewrap1", firstArray, xValue1, yValue1); // 입력된 값으로 새로운 행렬 생성
+								//console.log( firstArray );
+								break;
+							case 'rewrap2':
+								secondArray[arrayIndex][arrayIndex2] = changedValue;
+								makeMatrix( "rewrap2", secondArray, xValue2, yValue2 );
+								//console.log( secondArray );
+								break;
+						}
+					} 
+			}
+
+			//덧셈 뺄셈때 행렬의 길이 비교 함수
+			function compArray(inputArray1,inputArray2){
+				const array1_length = inputArray1.length;
+				const array2_length = inputArray2.length;
+				const array1_0_length = inputArray1[0].length;
+				const array2_0_length = inputArray2[0].length;
+						
+				if(inputArray1.length != inputArray2.length || inputArray1[0].length != inputArray2[0].length){
+					document.getElementById("fail_box1").style.display = "block";	
+					return false;		
+				}
+				return true;
+
+			}
+			
+			//곱셉때 행렬의 길이 비교 함수
+			function compArray2(inputArray1,inputArray2){
+				const array_length1 = inputArray1[0].length;
+				const array_length2 = inputArray2.length;
+
+				if(inputArray1[0].length != inputArray2.length){
+					document.getElementById("fail_box4").style.display = "block";
+					return false;
+				}
+				return true;
+			}
+
+			// 첫 번째 행렬 그리기 함수
+			document.getElementById("dr_btn1").onclick = function(){
+				let xValue1 = parseInt(document.getElementById("xA1").value);
+				let yValue1 = parseInt(document.getElementById("yA1").value);
+				
+				if (!checkValue(xValue1) || !checkValue(yValue1)) {
+					return;
+				}
+				// alert( xValue1 + " " +  yValue1 );
+				firstArray = [];
+				resetArray ( xValue1 , yValue1, firstArray); // 배열 초기화
+				// alert( resetArray );
+				resultArray = [];
+				makeMatrix( "rewrap1", firstArray , xValue1, yValue1);
+				resetArray(firstArray.length, firstArray[0].length,resultArray);
+				checkValueAttribute();
+				identityBtn("i_btn1","xA1","yA1","rewrap1",firstArray);
+				resetBtn("o_btn1","xA1","yA1","rewrap1",firstArray); 
+				randomBtn("r_btn1","xA1","yA1","rewrap1",firstArray);
+			}
+
+			// 두 번째 행렬 그리기 함수
+			document.getElementById("dr_btn2").onclick = function(){
+				let xValue2 = parseInt(document.getElementById("xA2").value);
+				let yValue2 = parseInt(document.getElementById("yA2").value);
+			
+				if (!checkValue(xValue2) || !checkValue(yValue2)) {
+					return;
+				}
+				secondArray = [];
+				resetArray(xValue2 , yValue2, secondArray);
+				resetArray(secondArray.length, secondArray[0].length, resultArray);
+				resultArray = [];
+				makeMatrix( "rewrap2", secondArray , xValue2, yValue2);
+				checkValueAttribute();
+				resetBtn("o_btn2","xA2","yA2","rewrap2",secondArray);
+				identityBtn("i_btn2","xA2","yA2","rewrap2",secondArray);
+				randomBtn("r_btn2","xA2","yA2","rewrap2",secondArray);
+			}
+
+			// 더하기, 빼기, 곱하기 버튼에 대한 함수
+			document.getElementById("pl_btn").onclick = function() { // 더하기
+				if (!compArray(firstArray, secondArray)) {
+					return;
+				}
+				resetArray(firstArray.length, firstArray[0].length, resultArray);
+
+				for (let i=0; i<firstArray.length; i++) {
+					for (let j=0; j<firstArray[i].length; j++) {
+						resultArray[i][j] = firstArray[i][j] + secondArray[i][j];
+					}
+				}
+				//console.log(resultArray+"<br>"+firstArray+"<br>" +secondArray);
+				makeMatrix("rewrapR", resultArray, firstArray.length, firstArray[0].length);
+				}
+
+				document.getElementById("mi_btn").onclick = function() { // 빼기
+					if (!compArray(firstArray, secondArray)) {
+							return;
+					}
+				resetArray(firstArray.length, firstArray[0].length, resultArray);
+					for (let i=0; i<firstArray.length; i++) {
+							for (let j=0; j<firstArray[i].length; j++) {
+								resultArray[i][j] = firstArray[i][j] - secondArray[i][j];
+							}
+					}
+					makeMatrix("rewrapR", resultArray, firstArray.length, firstArray[0].length);
+				}
+
+				document.getElementById("mu_btn").onclick = function() { // 곱하기
+					if (!compArray2(firstArray, secondArray)) {
+							return;
+					}
+				resetArray(firstArray.length, secondArray[0].length, resultArray);
+				console.log(resultArray);
+					let multiV = 0;
+						for (let i=0; i<firstArray.length; i++) {
+								for (let j=0; j<secondArray[0].length; j++) {
+									multiV = 0;
+									for (let k=0; k<secondArray.length; k++) {
+											multiV += firstArray[i][k] * secondArray[k][j];
+									}
+								resultArray[i][j] = multiV;
+						}
+					}
+				//console.log(resultArray);
+				makeMatrix("rewrapR", resultArray, firstArray.length, secondArray[0].length);
+			}
+
+			//0행렬 버튼
+			function resetBtn(btn,v1,v2,inputId,inputArray){
+				document.getElementById(btn).onclick = function(){
+					xValue = document.getElementById(v1).value;
+					yValue = document.getElementById(v2).value;
+					resetArray(firstArray.length, firstArray[0].length, resultArray);
+					resetArray ( xValue , yValue, inputArray); // 모두 0으로 초기화
+					makeMatrix( inputId, inputArray , xValue, yValue); // 행렬 재생성 
+					checkValueAttribute() // 바뀐 값 재추적
+				}
+			}
+
+			//단위행렬 버튼
+			function identityBtn(btn,v1,v2,inputId,inputArray){
+				document.getElementById(btn).onclick = function(){
+					xValue = document.getElementById(v1).value;
+					yValue = document.getElementById(v2).value;
+					
+					if(xValue===yValue){
+						resetArray ( xValue , yValue, inputArray); // 모두 0으로 초기화
+						for(let i=0; i<xValue; i++){
+							for(let j=0; j<yValue; j++){
+								if(i===j){
+									inputArray[i][j]=1; // i의값과 j의값이 같을때 1
+								}
+							}
+						}
+						resetArray(firstArray.length, firstArray[0].length, resultArray);
+						makeMatrix( inputId, inputArray , xValue, yValue); // 바뀐 값으로 재생성
+						checkValueAttribute() // 바뀐 값 재추적
+						//console.log(inputArray);
+					}
+					else{
+						document.getElementById("fail_box2").style.display = "block";
+					}
+				}
+			}
+
+			//랜덤 버튼
+			function randomBtn(btn,v1,v2,inputId,inputArray){
+				document.getElementById(btn).onclick = function(){
+					xValue = document.getElementById(v1).value;
+					yValue = document.getElementById(v2).value;
+					for(let i=0; i<xValue; i++){
+						for(let j=0; j<yValue; j++){
+							inputArray[i][j]=Math.floor(Math.random() * 100); // 각 배열마다 랜덤 숫자 생성
+						}
+					}
+					resetArray(firstArray.length, firstArray[0].length, resultArray);			 
+					makeMatrix( inputId, inputArray , xValue, yValue); // 바뀐 값으로 재생성
+					checkValueAttribute() // 바뀐 값 재추적
+					//console.log(result);
+				}
+			}
+
+			//재입력 권고 창
+			function makeFail(btn,box){
+				document.getElementById(btn).onclick = function(){
+					document.getElementById(box).style.display = "none";
+				}
+			}
+			makeFail("ybtn1","fail_box1");
+			makeFail("ybtn2","fail_box2");
+			makeFail("ybtn3","fail_box3");
+			makeFail("ybtn4","fail_box4");
+		</script>
+	</body>
+</html>          
