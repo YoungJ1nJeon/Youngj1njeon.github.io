@@ -1,0 +1,14 @@
+section.skills#skills
+    .skills_wrap
+        h1 SKILLS
+        .container
+            .skill_wrap
+                ul
+                    each skill, index in ['html', 'css', 'js', 'pug', 'sass']
+                        li(class= skill + (index === 0 ? ' select' : ''))
+                        
+                ul
+                    each skill in ['react','node', 'mysql', 'vim', 'vscode']
+                        li(class=skill)
+            .explanation_wrap
+                p#explanation_p HTML 웹 표준 준수 및 반응형 웹, 크로스 브라우징 구현, <br>HTML 코딩 및 스타일링, 웹 페이지 마크업이 가능합니다.

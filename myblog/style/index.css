@@ -1,0 +1,668 @@
+@charset "UTF-8";
+body, header, footer, main, nav, aside, section, article, p, address, div, h1, h2, h3, h4, h5, h6, form, fieldset, legend, table, tbody, th, td, ol, ul, li, dl, dt, dd, input, button, select, option, textarea, figure, figcaption, caption, blockquote {
+  margin: 0;
+  padding: 0;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+img {
+  display: block;
+  border: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+address, em, i {
+  font-style: normal;
+}
+
+button, fieldset, select, input {
+  border: 0;
+}
+
+legend, caption, hr {
+  display: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+div {
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "S-CoreDream-3Light";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "SDSamliphopangche_Outline";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/SDSamliphopangche_Outline.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+li.html {
+  background: url("./image/html.png") no-repeat center center;
+  background-size: cover;
+  cursor: pointer;
+}
+
+li.css {
+  background: url("./image/css.png") no-repeat center center;
+  background-size: cover;
+  cursor: pointer;
+}
+
+li.js {
+  background: url("./image/js.png") no-repeat center center;
+  background-size: cover;
+  cursor: pointer;
+}
+
+li.pug {
+  background: url("./image/pug.png") no-repeat center center;
+  background-size: cover;
+  cursor: pointer;
+}
+
+li.sass {
+  background: url("./image/sass.png") no-repeat center center;
+  background-size: cover;
+  cursor: pointer;
+}
+
+li.react {
+  background: url("./image/react.png") no-repeat center center;
+  background-size: cover;
+  cursor: pointer;
+}
+
+li.node {
+  background: url("./image/node.png") no-repeat center center;
+  background-size: cover;
+  cursor: pointer;
+}
+
+li.mysql {
+  background: url("./image/mysql.png") no-repeat center center;
+  background-size: cover;
+  cursor: pointer;
+}
+
+li.vim {
+  background: url("./image/vim.png") no-repeat center center;
+  background-size: cover;
+  cursor: pointer;
+}
+
+li.vscode {
+  background: url("./image/vscode.png") no-repeat center center;
+  background-size: cover;
+  cursor: pointer;
+}
+
+body {
+  font-family: "S-CoreDream-3Light";
+  position: relative;
+}
+
+.ham_wrap {
+  width: 90px;
+  height: 90px;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 3;
+}
+.ham_wrap .ham_toggle {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #97CDF1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ham_wrap .ham_toggle .span_wrap {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.ham_wrap .ham_toggle .span_wrap span {
+  display: block;
+  width: 100%;
+  height: 6px;
+  background-color: #fff;
+  border-radius: 3px;
+  transition: 0.4s;
+}
+.ham_wrap .active {
+  background: none;
+}
+.ham_wrap .active span:nth-child(1) {
+  transform: rotate(45deg) translate(12px, 12px);
+}
+.ham_wrap .active span:nth-child(2) {
+  opacity: 0;
+}
+.ham_wrap .active span:nth-child(3) {
+  transform: rotate(-45deg) translate(12px, -12px);
+}
+
+.menu_wrap {
+  width: 600px;
+  height: 600px;
+  position: fixed;
+  top: -600px;
+  right: -600px;
+  z-index: 2;
+  transition: top 0.4s, right 0.4s;
+}
+.menu_wrap .menu {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #97CDF1;
+}
+.menu_wrap .menu ul {
+  width: 50%;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  position: absolute;
+  left: 100px;
+  bottom: 80px;
+}
+.menu_wrap .menu ul li {
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+}
+.menu_wrap .menu ul li a {
+  font-size: 30px;
+  color: #fff;
+  font-weight: bold;
+}
+.menu_wrap .menu ul li a:hover {
+  text-decoration: underline;
+}
+
+.menu_wrap.active {
+  top: -160px;
+  right: -160px;
+}
+
+.home {
+  background-color: #ceeafd;
+  width: 100%;
+  height: 100vh;
+}
+.home h1 {
+  font-size: 100px;
+  font-family: SDSamliphopangche_Outline;
+  color: #fff;
+  text-align: center;
+  font-style: italic;
+  padding-top: 10%;
+  letter-spacing: 3px;
+}
+.home h1 span {
+  display: inline-block;
+  animation: moveUpDown 3s ease-in-out infinite; /* 애니메이션 설정 */
+}
+@keyframes moveUpDown {
+  0%, 100% {
+    transform: translateY(0);
+  } /* 시작과 끝 위치 */
+  50% {
+    transform: translateY(-8px);
+  } /* 중간 위치 */
+}
+.home .mouse.hidden {
+  opacity: 0;
+}
+.home .mouse {
+  width: 50px;
+  height: 90px;
+  border: 3px solid #7e7e7e;
+  border-radius: 60px;
+  position: relative;
+  margin: 20% auto;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+.home .mouse::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #7e7e7e;
+  border-radius: 50%;
+  opacity: 1;
+  animation: wheel 2s infinite;
+  -webkit-animation: wheel 2s infinite;
+}
+@keyframes wheel {
+  to {
+    opacity: 0;
+    top: 60px;
+  }
+}
+@-webkit-keyframes wheel {
+  to {
+    opacity: 0;
+    top: 60px;
+  }
+}
+
+.aboutme {
+  background-color: #ceeafd;
+  width: 100%;
+  height: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.aboutme .aboutme_wrap {
+  width: 90%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.aboutme .aboutme_wrap .container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 100px;
+  margin-top: -50px;
+}
+.aboutme .aboutme_wrap .container .img {
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: url("./image/myImg.jpg") no-repeat center center;
+  background-size: cover;
+}
+.aboutme .aboutme_wrap .container .introduce {
+  display: flex;
+  flex-direction: column;
+}
+.aboutme .aboutme_wrap .container .introduce h2 {
+  font-size: 28px;
+  margin-top: 40px;
+  letter-spacing: 2px;
+  line-height: 42px;
+}
+.aboutme .aboutme_wrap .container .introduce > p {
+  font-size: 20px;
+  margin-top: 20px;
+  line-height: 32px;
+}
+.aboutme .aboutme_wrap .container .introduce .hashtag {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  margin-top: 50px;
+}
+.aboutme .aboutme_wrap .container .introduce .hashtag .tag {
+  width: 120px;
+  height: 36px;
+  border: 3px solid #5399c2;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.aboutme .aboutme_wrap .container .introduce .hashtag .tag i {
+  color: #5399c2;
+}
+.aboutme .aboutme_wrap .container .introduce .hashtag .tag span {
+  color: #5399c2;
+  display: block;
+  font-weight: bold;
+}
+.aboutme .background {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3518/262;
+  background: url("./image/background.png") no-repeat center center;
+  background-size: cover;
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+}
+
+.skills {
+  background-color: #A7D6F6;
+  width: 100%;
+  height: 800px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.skills .skills_wrap {
+  width: 90%;
+  height: 100%;
+  position: relative;
+}
+.skills .skills_wrap h1 {
+  color: #fff;
+  text-align: center;
+  font-size: 60px;
+  font-family: "SDSamliphopangche_Outline";
+  padding-top: 30px;
+}
+.skills .skills_wrap .container {
+  width: 100%;
+  height: 600px;
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5%;
+}
+.skills .skills_wrap .container .skill_wrap {
+  width: 60%;
+  height: 100%;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.5058823529);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.skills .skills_wrap .container .skill_wrap ul {
+  width: 100%;
+  height: 100px;
+  border-bottom: 2px solid #74B9E1;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.skills .skills_wrap .container .skill_wrap ul li {
+  width: 80px;
+  height: 80px;
+  filter: grayscale(100%);
+}
+.skills .skills_wrap .container .skill_wrap ul .select {
+  filter: grayscale(0);
+}
+.skills .skills_wrap .container .skill_wrap ul .html {
+  background: url("./image/html.png") no-repeat center center;
+  background-size: cover;
+  cursor: pointer;
+}
+.skills .skills_wrap .container .explanation_wrap {
+  width: 35%;
+  height: 100%;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.5058823529);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.skills .skills_wrap .container .explanation_wrap p {
+  width: 80%;
+  font-size: 18px;
+}
+
+.portfolio {
+  background-color: #fff;
+  width: 100%;
+  height: 950px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+.portfolio .portfolio_wrap {
+  width: 90%;
+  height: 100%;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.portfolio .portfolio_wrap h1 {
+  color: #A7D6F6;
+  text-align: center;
+  font-size: 60px;
+  font-family: "SDSamliphopangche_Outline";
+  padding-top: 30px;
+}
+.portfolio .portfolio_wrap .container {
+  width: 100%;
+  height: 800px;
+  display: flex;
+  justify-content: space-evenly;
+  position: relative;
+}
+.portfolio .portfolio_wrap .container .pf {
+  width: 450px;
+  height: 450px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+.portfolio .portfolio_wrap .container .pf .pf-background {
+  width: 350px;
+  height: 350px;
+  transition: transform 0.3s ease-in-out;
+  border-radius: 15px;
+}
+.portfolio .portfolio_wrap .container .pf h2 {
+  text-align: center;
+}
+.portfolio .portfolio_wrap .container .pf:hover .pf-background {
+  transform: scale(0.95);
+}
+.portfolio .portfolio_wrap .container .pf1 .pf-background {
+  background: url("./image/portfolio1.png") no-repeat center center;
+  background-size: contain;
+  cursor: pointer;
+}
+.portfolio .portfolio_wrap .container .pf2 .pf-background {
+  background: url("./image/portfolio2.png") no-repeat center center;
+  background-size: contain;
+  cursor: pointer;
+}
+.portfolio .portfolio_wrap .container .pf3 .pf-background {
+  background: url("./image/portfolio3.png") no-repeat center center;
+  background-size: contain;
+  cursor: pointer;
+}
+.portfolio .portfolio_wrap .container .p_explanation_wrap {
+  width: 80%;
+  height: 80%;
+  background: #fff;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+  position: absolute;
+  z-index: 2;
+  border-radius: 50px;
+  display: none;
+}
+.portfolio .portfolio_wrap .container .p_explanation_wrap #close {
+  font-size: 40px;
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+.portfolio .portfolio_wrap .container .p_explanation_wrap .contents_wrap {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.portfolio .portfolio_wrap .container .p_explanation_wrap .contents_wrap .pf_background {
+  width: 700px;
+  height: 400px;
+}
+.portfolio .portfolio_wrap .container .p_explanation_wrap .contents_wrap .contents {
+  width: 700px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.portfolio .portfolio_wrap .container .p_explanation_wrap .contents_wrap .contents h3 {
+  font-size: 30px;
+}
+.portfolio .portfolio_wrap .container .p_explanation_wrap .contents_wrap .contents h3 span {
+  font-size: 18px;
+  color: rgb(99, 99, 99);
+}
+.portfolio .portfolio_wrap .container .p_explanation_wrap .contents_wrap .contents .tool {
+  display: flex;
+  gap: 20px;
+}
+.portfolio .portfolio_wrap .container .p_explanation_wrap .contents_wrap .contents .tool span {
+  padding: 1px 5px;
+  width: auto;
+  height: auto;
+  background: rgb(167, 214, 246);
+  border-radius: 5px;
+  color: #fff;
+  font-weight: bold;
+}
+.portfolio .portfolio_wrap .container .p_explanation_wrap .contents_wrap .contents .explanation {
+  font-size: 18px;
+  margin-top: 5px;
+}
+.portfolio .portfolio_wrap .container .p_explanation_wrap .contents_wrap .contents .link_wrap {
+  display: flex;
+  gap: 20px;
+  margin-top: 5px;
+}
+.portfolio .portfolio_wrap .container .p_explanation_wrap .contents_wrap .contents .link_wrap a {
+  display: block;
+  padding: 5px 10px;
+  border: 1px solid #000;
+  color: #000;
+}
+.portfolio .portfolio_wrap .container .p_explanation_wrap .contents_wrap .contents .link_wrap a:hover {
+  background: rgb(215, 236, 250);
+}
+.portfolio .background {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3518/262;
+  background: url("./image/background.png") no-repeat center center;
+  background-size: cover;
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+}
+
+.contact {
+  width: 100%;
+  height: 800px;
+  background-color: #A7D6F6;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+.contact .contact_wrap {
+  width: 90%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.contact .contact_wrap h1 {
+  color: #fff;
+  text-align: center;
+  font-size: 60px;
+  font-family: "SDSamliphopangche_Outline";
+  padding-top: 30px;
+}
+.contact .contact_wrap .contents {
+  width: 100%;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 120px;
+}
+.contact .contact_wrap .contents .my_picture {
+  width: 299.68px;
+  height: 400px;
+  background: url("./image/myImg2.jpg") no-repeat center center;
+  background-size: cover;
+  border-radius: 30px;
+}
+.contact .contact_wrap .contents .link_box {
+  width: 40%;
+  height: 400px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+.contact .contact_wrap .contents .link_box a {
+  width: 100%;
+  height: 100px;
+  gap: 30px;
+  border: 1px solid #000;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.contact .contact_wrap .contents .link_box a .img {
+  display: block;
+  width: 50px;
+  height: 50px;
+}
+.contact .contact_wrap .contents .link_box a .s1 {
+  background: url("./image/phone.png") no-repeat center center;
+  background-size: cover;
+}
+.contact .contact_wrap .contents .link_box a .s2 {
+  background: url("./image/email.png") no-repeat center center;
+  background-size: cover;
+}
+.contact .contact_wrap .contents .link_box a .s3 {
+  background: url("./image/kakaotalk.png") no-repeat center center;
+  background-size: cover;
+}
+.contact .contact_wrap .contents .link_box a .detail {
+  display: block;
+  width: 200px;
+  height: auto;
+  font-size: 25px;
+  color: #000;
+  font-weight: bold;
+}
+
+/*# sourceMappingURL=index.css.map */

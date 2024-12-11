@@ -1,0 +1,21 @@
+doctype html 
+html(lang="ko") 
+    head
+        meta(charset="utf-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="robots" content="all")
+        meta(name="format-detection", content="telephone=no")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover")
+        link(rel="stylesheet", href="style/index.css")
+        link(rel="icon" href="./favicon.png")
+        link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css")
+        script(type="module" src="./js/index.js")
+        title 전영진 Portfolio
+        
+    body
+        include ./pug/Header.pug
+        include ./pug/Home.pug
+        include ./pug/Aboutme.pug
+        include ./pug/Skills.pug
+        include ./pug/Portfolio.pug
+        include ./pug/Contact.pug
