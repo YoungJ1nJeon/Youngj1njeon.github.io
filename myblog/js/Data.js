@@ -61,13 +61,22 @@ const blogData = {
         },
         {
             project: '3',
+            title: '버그킹 키오스크',
+            projectType: '개인 프로젝트',
+            tools: ['REACT', 'SCSS', 'JAVASCRIPT', 'NODE.js', 'Json', 'Redux', 'AJAX'],
+            explanation: 'JSON에서 정보를 불러와서 주문, 영수증 출력이 가능한 키오스크를 구현했습니다.',
+            siteLink: 'http://kkms4001.iptime.org/~c19st20/portfolio/kiosk/'
+        },
+        {
+            project: '4',
             title: '안산시 도시환경 대시보드',
             projectType: '팀 프로젝트',
             tools: ['PUG', 'SCSS', 'JAVASCRIPT', 'NODE.js', 'P5.js', 'AJAX', 'JSON'],
             explanation: '실시간으로 데이터를 받아와서 데이터 정보를 그래프로 출력해주는 대시보드를 구현했습니다.',
             siteLink: 'http://kkms4001.iptime.org:33183/',
             pdfLink: 'http://kkms4001.iptime.org/~c19st20/portfolio/pdf/AnsanCity.pdf'
-        }
+        },
+        
     ]
 }
 

@@ -117,6 +117,9 @@ class blogScript{
                         case 'pf3 pf':
                             domClass('.contents_wrap').innerHTML = PortfolioData(...Object.values(this.data.portfolio[2]));
                             break;
+                        case 'pf4 pf':
+                            domClass('.contents_wrap').innerHTML = PortfolioData(...Object.values(this.data.portfolio[3]));
+                            break;
                     }
                 });
             });
